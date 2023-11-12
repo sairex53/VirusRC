@@ -2,7 +2,7 @@ import os
 import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(("5.tcp.eu.ngrok.io", 19521))
+s.connect(("127.0.0.1", 9999))
 print("Wait message 😈")
 
 from_server = s.recv(1024)
