@@ -1,14 +1,32 @@
-import os
 import socket
+import os
+import time
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(("127.0.0.1", 9999))
-print("Wait message 😈")
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+HOST = "localhost"
+client.connect((HOST, 9999))
+msg = client.recv(1024).decode()
 
-from_server = s.recv(1024)
-print(from_server.decode())
+if msg == "start":
+    client.send("accept".encode('utf-8'))
+    print("#Connected")
 
-if int(from_server.decode()) == 1:
-    os.remove('/Users/sairex/Documents/Max\ 8')
-    s.send("\nFile removed".encode())
-    s.close()
+    while True:
+        msg = client.recv(1024).decode('utf-8')
+
+        if msg == "1":
+            if open("/Users/sairex/Desktop/file.txt", mode="w+"):
+                client.send(" ~/File exists".encode())
+            else:
+                client.send("$No file".encode())
+        if msg == "2":
+            print("#Connection close")
+            connect = True 
+            while True:
+                client.connect(("localhost", 9999))
+        else:
+            if msg == "1":
+                pass
+            else:
+                client.send("$No message".encode()) 
+        

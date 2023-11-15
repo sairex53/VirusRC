@@ -1,23 +1,27 @@
 import socket
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind(("localhost", 9999))
-s.listen(5)
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(("localhost", 9999))
+print("#Wait connections")
+server.listen(1)
 
-print("Wait your connections 😈")
+client, addr = server.accept()
+client.send("start".encode())
+msg = client.recv(1024).decode()
 
-while True:
-    conn, addr = s.accept()
-    from_client = ""
-
-    msg = str(input("> "))
-    conn.send(msg.encode())
-
+if msg == "accept":
+    print("$Connected")      
+        
     while True:
-        data = conn.recv(1024)
-        if not data:
+        msgServer = input("> ")
+        if msgServer == "2":
+            print("#Connection close")
             break
-        from_client += data.decode('utf-8')
-        print(from_client)
-    print("Wait client...")
-    conn.close()
+        if msgServer == "":
+            print("#Error message")
+        else:
+            client.send(msgServer.encode())
+            msg = client.recv(1024).decode()
+            print(msg)
+else:
+    print("$UNKNOWN ERROR")
