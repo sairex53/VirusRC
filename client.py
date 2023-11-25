@@ -10,8 +10,8 @@ import smtplib
 
 def get_ip_from_email():
     host = "smtp.gmail.com"
-    password = "app_password"
-    username = "email"
+    password = "jhjdqykerqbfiffx"
+    username = "hackerowskiy@gmail.com"
     mail = imaplib.IMAP4_SSL(host)
     mail.login(username, password)
     mail.select("inbox")
