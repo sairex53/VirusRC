@@ -29,7 +29,7 @@ def send_email_ip():
     text = f"{get_ip()}"
     msg.attach(MIMEText(text, "plain"))
     #Send 
-    smtp_server.sendmail("hack3r0w3@gmail.com", "hackerowskiy@gmail.com", msg.as_string())
+    smtp_server.sendmail("@gmail.com", "@gmail.com", msg.as_string())
     smtp_server.close()
     print("Sended!")
 
